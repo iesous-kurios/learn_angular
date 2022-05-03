@@ -7,17 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  length = 0;
   includeLetters = false;
   includeNumbers = false;
   includeSymbols = false;
   password = '';
 
+  onChangeLength(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const parsedValue = parseInt(target.value);
+    if (!isNaN(parsedValue)) {
+      this.length = parsedValue;
+    }
+  }
 
   onButtonClick() {
     this.password = 'MY PASSWORD!!!';
-    console.log("State of include letters" + " " + this.includeLetters);
-    console.log("State of include numbers" + " " + this.includeNumbers);
-    console.log("State of include symbols" + " " + this.includeSymbols);
   }
 
   onChangeUseLetters() {
